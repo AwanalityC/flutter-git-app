@@ -1,46 +1,25 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart'; // Mengimpor file kedua
+import 'screens/home_screen.dart';
 
+// This is the very first thing that runs when the app starts.
 void main() {
-  runApp(const MyApp());
+  runApp(const ShadowDiaryApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ShadowDiaryApp extends StatelessWidget {
+  const ShadowDiaryApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // MaterialApp is the root widget that gives us theming, navigation, etc.
     return MaterialApp(
-      title: 'Navigation App',
+      title: 'Shadow Diary',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorSchemeSeed: const Color(0xFF6C63FF),
+        useMaterial3: true,
       ),
-      home: const FirstScreen(),
-    );
-  }
-}
-
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('First Screen'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigasi ke Halaman Kedua
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const HomePage()),
-            );
-          },
-          child: const Text('Go to Second Screen'),
-        ),
-      ),
+      home: const HomeScreen(),
     );
   }
 }
